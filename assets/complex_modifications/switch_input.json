@@ -1,0 +1,89 @@
+{
+  "title": "Automatically switch input source depending on keyboard",
+  "rules": [
+    {
+      "description": "internal keyboard switch from french to us",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "input_source_id": "^com\\.apple\\.keylayout\\.French-PC$"
+                }
+              ]
+            },
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "device_id": 4294969673
+                }
+              ]
+            }
+          ],
+          "from": {
+            "any": "key_code",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "select_input_source": {
+                  "input_source_id": "com.apple.keylayout.ABC",
+                  "language": "en"
+              }
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "internal keyboard switch from us to french",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
+                }
+              ]
+            },
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 1241
+                }
+              ]
+            }
+          ],
+          "from": {
+            "any": "key_code",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "select_input_source": {
+                  "input_source_id": "com.apple.keylayout.French-PC",
+                  "language": "fr"
+              }
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}

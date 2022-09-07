@@ -1,0 +1,37 @@
+{
+  "title": "Fix numpad period on french keyboard",
+  "rules": [
+      {
+        "description": "Numpad period",
+        "manipulators": [
+          {
+            "conditions": [
+              {
+                "input_sources": [
+                  {
+                    "input_source_id": "^com\\.apple\\.keylayout\\.French-PC$"
+                  }
+                ],
+                "type": "input_source_if"
+              }
+            ],
+            "from": {
+              "key_code": "keypad_period",
+                "modifiers": {
+                  "optional": ["caps_lock"]
+                }
+            },
+            "to": [
+              {
+                "key_code": "comma",
+                "modifiers": [
+                  "right_shift"
+                ]
+              }
+            ],
+            "type": "basic"
+          }
+        ]
+      }
+  ]
+}

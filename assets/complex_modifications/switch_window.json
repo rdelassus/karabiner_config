@@ -1,0 +1,51 @@
+{
+  "title": "Make switch window shortcut available from french keyboard",
+  "rules": [
+    {
+      "description": "Switch window",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "input_sources": [
+                {
+                  "input_source_id": "^com\\.apple\\.keylayout\\.French-PC$"
+                }
+              ],
+              "type": "input_source_if"
+            }
+          ],
+          "from": {
+            "key_code": "non_us_backslash",
+            "modifiers": {
+              "mandatory": [
+                "left_command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "spacebar",
+              "modifiers": [
+                "left_control"
+              ]
+            },
+            {
+              "key_code": "grave_accent_and_tilde",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "spacebar",
+              "modifiers": [
+                "left_control"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}
